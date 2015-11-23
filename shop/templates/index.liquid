@@ -1,18 +1,308 @@
-{% if settings.home_section_1 != blank %}
-  {% include settings.home_section_1 %}
-{% endif %}
+{% assign page = pages.frontpage %}
+<header>
+  <div class="wrap">
+    <div class="background"></div>
+    <div class="vertical-center">
+      <div class="inner">
+        {{ page.content }}
+        <div class="list-catalogs">
+          {% include 'collections-lists' %}
+        </div>
+      </div>
+    </div>
 
-{% if settings.home_section_2 != blank %}
-  <hr class="hr--small hr--clear">
-  {% include settings.home_section_2 %}
-{% endif %}
+    <a href="#main-catalog" class="icon-arrow"></a>
 
-{% if settings.home_section_3 != blank %}
-  <hr class="hr--small hr--clear">
-  {% include settings.home_section_3 %}
-{% endif %}
+    <div class="header-footer">
+      <div class="pull-left">
+        The Inkjecta delivers excellence in its design and use
+      </div>
+      <div class="pull-right">
+        <div class="social">
+          <a href="#"><img src="{{ 'Twitter.svg' | asset_url }}" alt=""/></a>
+          <a href="#"><img src="{{ 'Facebook.svg' | asset_url }}" alt=""/></a>
+          <a href="#"><img src="{{ 'Youtube.svg' | asset_url }}" alt=""/></a>
+          <a href="#"><img src="{{ 'Google.svg' | asset_url }}" alt=""/></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
 
-{% if settings.home_section_4 != blank %}
-  <hr class="hr--small hr--clear">
-  {% include settings.home_section_4 %}
-{% endif %}
+
+<!-- Main Catalog -->
+<section class="main_catalog" id="main-catalog">
+  <!-- Arrivals -->
+  <div class="wrap-arrivals">
+    <div class="arrivals">
+      <ul>
+        <li>
+          <div class="inner">
+            <div class="middle-text">New Arrivals</div>
+            <h2>Tattoo Machines</h2>
+            <p>Be the first to find out about new styles and exclusive offers.</p>
+            <a href="#" class="view-all">View all</a>
+          </div>
+        </li>
+        <li>
+          <div class="inner">
+            <a href="#">
+              <img src="{{ 'product3.jpg' | asset_url }}" alt=""/>
+            </a>
+            <a href="#" class="title">Black Pearl Graywash Mom's</a>
+            <span class="price">$298</span>
+          </div>
+        </li>
+        <li>
+          <div class="inner">
+            <a href="#">
+              <img src="{{ 'product3.jpg' | asset_url }}" alt=""/>
+            </a>
+            <a href="#" class="title">Black Pearl Graywash Mom's</a>
+            <span class="price">$298</span>
+          </div>
+        </li>
+        <li>
+          <div class="inner">
+            <a href="#">
+              <img src="{{ 'product3.jpg' | asset_url }}" alt=""/>
+            </a>
+            <a href="#" class="title">Black Pearl Graywash Mom's</a>
+            <span class="price">$298</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- end Arrivals -->
+
+  <!-- Blocks -->
+  <div class="wrap-blocks">
+    <div class="blocks">
+      <ul>
+        <li class="block block-dark size-40">
+          <div class="inner" style="background-image: url({{ 'Mask.png' | asset_url }}); background-size: cover;">
+            <div class="middle-text">
+              New Arrivals
+            </div>
+            <h2>Power
+              Supplies</h2>
+            <p>Be the first to find out about new styles and exclusive offers.</p>
+            <a href="#">View all</a>
+          </div>
+        </li>
+        <li class="block size-60">
+          <div class="inner" style="background-image: url({{ 'Mask_1.png' | asset_url }}); background-size: cover;">
+            <h2>Our Brands</h2>
+            <p>Be the first to find out about new styles and exclusive offers.</p>
+            <div class="links">
+              <ul>
+                <li>
+                  <a href="#">Shipping</a>
+                </li>
+                <li>
+                  <a href="#">Terms of Use</a>
+                </li>
+                <li>
+                  <a href="#">Privacy policy</a>
+                </li>
+                <li>
+                  <a href="#">FAQs</a>
+                </li>
+                <li>
+                  <a href="#">Contact</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- end Blocks -->
+
+  <!-- Carousel -->
+  <div class="wrap-carousel">
+    <div class="carousel">
+      <div class="middle-text">New Arrivals</div>
+      <h2>Tattoo Inks</h2>
+      <ul>
+        <li>
+          <div class="inner">
+            <a href="#">
+              <img src="{{ 'product2.jpg' | asset_url }}" alt=""/>
+            </a>
+            <a href="#" class="title">Black Pearl</a>
+            <span class="price">$298</span>
+          </div>
+        </li>
+        <li>
+          <div class="inner">
+            <a href="#">
+              <img src="{{ 'product2.jpg' | asset_url }}" alt=""/>
+            </a>
+            <a href="#" class="title">Black Pearl</a>
+            <span class="price">$298</span>
+          </div>
+        </li>
+        <li>
+          <div class="inner">
+            <a href="#">
+              <img src="{{ 'product2.jpg' | asset_url }}" alt=""/>
+            </a>
+            <a href="#" class="title">Black Pearl</a>
+            <span class="price">$298</span>
+          </div>
+        </li>
+        <li>
+          <div class="inner">
+            <a href="#">
+              <img src="{{ 'product2.jpg' | asset_url }}" alt=""/>
+            </a>
+            <a href="#" class="title">Black Pearl</a>
+            <span class="price">$298</span>
+          </div>
+        </li>
+        <li>
+          <div class="inner">
+            <a href="#">
+              <img src="{{ 'product2.jpg' | asset_url }}" alt=""/>
+            </a>
+            <a href="#" class="title">Black Pearl</a>
+            <span class="price">$298</span>
+          </div>
+        </li>
+        <li>
+          <div class="inner">
+            <a href="#">
+              <img src="{{ 'product2.jpg' | asset_url }}" alt=""/>
+            </a>
+            <a href="#" class="title">Black Pearl</a>
+            <span class="price">$298</span>
+          </div>
+        </li>
+        <li>
+          <div class="inner">
+            <a href="#">
+              <img src="{{ 'product2.jpg' | asset_url }}" alt=""/>
+            </a>
+            <a href="#" class="title">Black Pearl</a>
+            <span class="price">$298</span>
+          </div>
+        </li>
+        <li>
+          <div class="inner">
+            <a href="#">
+              <img src="{{ 'product2.jpg' | asset_url }}" alt=""/>
+            </a>
+            <a href="#" class="title">Black Pearl</a>
+            <span class="price">$298</span>
+          </div>
+        </li>
+        <li>
+          <div class="inner">
+            <a href="#">
+              <img src="{{ 'product2.jpg' | asset_url }}" alt=""/>
+            </a>
+            <a href="#" class="title">Black Pearl</a>
+            <span class="price">$298</span>
+          </div>
+        </li>
+        <li>
+          <div class="inner">
+            <a href="#">
+              <img src="{{ 'product2.jpg' | asset_url }}" alt=""/>
+            </a>
+            <a href="#" class="title">Black Pearl</a>
+            <span class="price">$298</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- end Carousel -->
+
+  <!-- Adv -->
+  <div class="wrap-adv">
+    <div class="adv" style="background-image: url({{ 'Mask_2.png' | asset_url }}); background-size: cover;">
+      <div class="middle-text">
+        New Arrivals
+      </div>
+      <h1>Tattoo Inks</h1>
+      <p>Be the first to find out about new styles and exclusive offers.</p>
+    </div>
+  </div>
+  <!-- end Adv -->
+
+  <!-- Items catalog -->
+  <div class="items-catalog">
+    <ul>
+      <li class="size-40">
+        <div class="inner main">
+          <img src="{{ 'product.jpg' | asset_url }}" alt=""/>
+          <h2>Hello Yellow Mom's 1/2oz</h2>
+          <a href="#" class="title">Black Pearl Graywash Mom's</a>
+          <span class="price">$298</span>
+        </div>
+      </li>
+      <li class="size-20">
+        <div class="inner">
+          <img src="{{ 'product3.jpg' | asset_url }}" alt=""/>
+          <a href="#" class="title">Black Pearl Graywash Mom's</a>
+          <span class="price">$298</span>
+        </div>
+      </li>
+      <li class="size-20">
+        <div class="inner">
+          <img src="{{ 'product3.jpg' | asset_url }}" alt=""/>
+          <a href="#" class="title">Black Pearl Graywash Mom's</a>
+          <span class="price">$298</span>
+        </div>
+      </li>
+      <li class="size-20">
+        <div class="inner">
+          <img src="{{ 'product3.jpg' | asset_url }}" alt=""/>
+          <a href="#" class="title">Black Pearl Graywash Mom's</a>
+          <span class="price">$298</span>
+        </div>
+      </li>
+      <li class="size-20">
+        <div class="inner">
+          <img src="{{ 'product3.jpg' | asset_url }}" alt=""/>
+          <a href="#" class="title">Black Pearl Graywash Mom's</a>
+          <span class="price">$298</span>
+        </div>
+      </li>
+      <li class="size-20">
+        <div class="inner">
+          <img src="{{ 'product3.jpg' | asset_url }}" alt=""/>
+          <a href="#" class="title">Black Pearl Graywash Mom's</a>
+          <span class="price">$298</span>
+        </div>
+      </li>
+      <li class="size-20">
+        <div class="inner">
+          <img src="{{ 'product3.jpg' | asset_url }}" alt=""/>
+          <a href="#" class="title">Black Pearl Graywash Mom's</a>
+          <span class="price">$298</span>
+        </div>
+      </li>
+      <li class="size-20">
+        <div class="inner">
+          <img src="{{ 'product3.jpg' | asset_url }}" alt=""/>
+          <a href="#" class="title">Black Pearl Graywash Mom's</a>
+          <span class="price">$298</span>
+        </div>
+      </li>
+      <li class="size-20">
+        <div class="inner">
+          <img src="{{ 'product3.jpg' | asset_url }}" alt=""/>
+          <a href="#" class="title">Black Pearl Graywash Mom's</a>
+          <span class="price">$298</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <!-- end Items catalog -->
+</section>
+<!-- end Main Catalog -->

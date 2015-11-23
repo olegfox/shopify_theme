@@ -1,0 +1,15 @@
+{% for link in linklists.collections-lists.links %}
+    {% assign modul = forloop.index0 | modulo: 3 %}
+    {% if modul == 0 %}
+        <ul>
+    {% endif %}
+    <li>
+        <a href="{{ link.url }}">{{ link.title }}</a>
+        {% if modul <> 2 %}
+            <span class="line">/</span>
+        {% endif %}
+    </li>
+    {% if modul == 2 %}
+        </ul>
+    {% endif %}
+{% endfor %}

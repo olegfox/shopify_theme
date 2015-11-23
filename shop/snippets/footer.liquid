@@ -1,0 +1,43 @@
+<!-- Footer -->
+<footer>
+  <div class="inner-footer">
+    <div class="left">
+      <div class="list-catalogs">
+        {% include 'collections-lists' %}
+      </div>
+
+      <div class="links">
+        <ul>
+          {% for link in linklists.footer.links %}
+            <li>
+              <a href="{{ link.url }}">{{ link.title }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <div class="copyright">
+        © 2015 Tattooist. Tattoo Machines.  Design by Great Simple.
+      </div>
+    </div>
+    <div class="right">
+      <h3>Be First</h3>
+      <p>Be the first to find out about new styles and exclusive offers.</p>
+
+      <form action="" class="subscribe">
+        <div class="form-field">
+          <input type="email" placeholder="Email Address"/>
+          <button type="submit"></button>
+        </div>
+      </form>
+
+      <div class="social">
+        <a href="#"><img src="{{ 'Twitter.svg' | asset_url }}" alt=""/></a>
+        <a href="#"><img src="{{ 'Facebook.svg' | asset_url }}" alt=""/></a>
+        <a href="#"><img src="{{ 'Youtube.svg' | asset_url }}" alt=""/></a>
+        <a href="#"><img src="{{ 'Google.svg' | asset_url }}" alt=""/></a>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- end Footer -->
