@@ -1,3 +1,114 @@
+<section class="product">
+
+  <div class="wrap-head">
+    <!-- Breadcrumbs -->
+    <div class="breadcrumbs">
+      <ul>
+        <li>
+          <a href="/">Home</a>
+          <span class="line">/</span>
+        </li>
+        <li>{{ product.title }}</li>
+      </ul>
+    </div>
+    <!-- end Breadcrumbs -->
+
+    <h2>{{ product.title }}</h2>
+  </div>
+
+  <!-- Product images -->
+  <div class="product-images">
+    <ul>
+      {% if product.images.size > 1 %}
+        {% for image in product.images %}
+          <li>
+            <a href="#"><img src="{{ image.src | img_url: 'original' }}" alt=""/></a>
+          </li>
+        {% endfor %}
+      {% endif %}
+    </ul>
+  </div>
+  <!-- end Product images -->
+
+  <!-- Social-bar -->
+  <div class="social-bar">
+    <div class="label">Share</div>
+    <div class="social">
+      <a href="#"><img src="{{ 'Twitter.svg' | asset_url }}" alt=""/></a>
+      <a href="#"><img src="{{ 'Facebook.svg' | asset_url }}" alt=""/></a>
+      <a href="#"><img src="{{ 'Google.svg' | asset_url }}" alt=""/></a>
+    </div>
+    <div class="add-favourite">
+      Add to favorites
+      <div class="icone-favorite"></div>
+    </div>
+  </div>
+  <!-- end Social-bar -->
+
+  <!-- Shop-bar -->
+  <div class="wrap-shop-bar">
+    <div class="shop-bar">
+      <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm">
+        {% for variant in product.variants %}
+          {% if variant.available %}
+            {{ variant.title }}
+          {% endif %}
+        {% endfor %}
+        <div class="form-field">
+          <label for="size">size</label>
+          <div class="wrap-select">
+            <select name="size" id="size">
+              <option value="">Select</option>
+              <option value="">10</option>
+              <option value="">11</option>
+              <option value="">12</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-field">
+          <label for="color">size</label>
+          <div class="wrap-select">
+            <select name="color" id="color">
+              <option value="">Select</option>
+              <option value="">10</option>
+              <option value="">11</option>
+              <option value="">12</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-field">
+          <label for="qty">qty</label>
+          <input type="number" id="qty" name="quantity" min="1" value="1"/>
+        </div>
+
+        <button class="wrap-button" type="submit">
+          <div class="price">{{ product.price | money }}</div>
+          <div class="text">Add to cart</div>
+        </button>
+      </form>
+    </div>
+  </div>
+  <!-- end Shop-bar -->
+
+  <!-- Product info -->
+  <div class="wrap-product-info">
+    <div class="product-info">
+      <div class="text">
+        {{ product.description }}
+      </div>
+    </div>
+  </div>
+  <!-- end Product info -->
+
+</section>
+
+
+
+
+
+
+
+
 <div itemscope itemtype="http://schema.org/Product">
 
   <meta itemprop="url" content="{{ shop.url }}{{ product.url }}">
@@ -136,37 +247,3 @@
   {% endif %}
 
 </div>
-
-{{ 'option_selection.js' | shopify_asset_url | script_tag }}
-<script>
-  var selectCallback = function(variant, selector) {
-    timber.productPage({
-      money_format: "{{ shop.money_format }}",
-      variant: variant,
-      selector: selector,
-      translations: {
-        add_to_cart : "{{ 'products.product.add_to_cart' | t }}",
-        sold_out : "{{ 'products.product.sold_out' | t }}",
-        unavailable : "{{ 'products.product.unavailable' | t }}"
-      }
-    });
-  };
-
-  jQuery(function($) {
-    new Shopify.OptionSelectors('productSelect', {
-      product: {{ product | json }},
-      onVariantSelected: selectCallback,
-      enableHistoryState: true
-    });
-
-    // Add label if only one product option and it isn't 'Title'. Could be 'Size'.
-    {% if product.options.size == 1 and product.options.first != 'Title' %}
-      $('.selector-wrapper:eq(0)').prepend('<label for="productSelect-option-0">{{ product.options.first | escape }}</label>');
-    {% endif %}
-
-    // Hide selectors if we only have 1 variant and its title contains 'Default'.
-    {% if product.variants.size == 1 and product.variants.first.title contains 'Default' %}
-      $('.selector-wrapper').hide();
-    {% endif %}
-  });
-</script>

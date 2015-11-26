@@ -27,7 +27,6 @@
   <meta name="theme-color" content="{{ settings.color_primary }}">
 
   <!-- CSS ================================================== -->
-  {{ 'slick.css' | asset_url | stylesheet_tag }}
   {{ 'theme.css' | asset_url | stylesheet_tag }}
 
   <!-- Header hook for plugins ================================================== -->
@@ -40,13 +39,17 @@
 
 <body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}" >
 
+  {% include 'cart' %}
+
+  {% include 'site-nav' %}
+
   {% include 'header-bar' %}
 
   {{content_for_layout}}
 
   {% include 'footer' %}
 
-  {{ 'main.js' | asset_url | script_tag }}
+  {{ 'script.js' | asset_url | script_tag }}
 
 </body>
 </html>
