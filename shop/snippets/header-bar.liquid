@@ -1,6 +1,6 @@
 <!-- Header bar -->
 <div class="wrap-header-bar">
-  <div class="header-bar header-bar-white">
+  <div class="header-bar {% if template == 'index' %}header-bar-white{% else if template == 'product' %}header-bar-dark header-bar-gray header-bar-static{% else %}header-bar-dark header-bar-static{% endif %}">
     <div class="grid-item text-left grid-item-1">
       <!-- Menu button -->
       <div class="menu-button" id="toggle-sidebar">

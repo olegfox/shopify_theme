@@ -26,7 +26,7 @@
           <file leaf-file-name="collection.liquid" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/shop/templates/collection.liquid">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
+                <state vertical-scroll-proportion="-0.0">
                   <caret line="47" column="83" selection-start-line="47" selection-start-column="76" selection-end-line="47" selection-end-column="83" />
                   <folding />
                 </state>
@@ -36,18 +36,18 @@
           <file leaf-file-name="collection-sorting.liquid" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/shop/snippets/collection-sorting.liquid">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
+                <state vertical-scroll-proportion="-18.125">
                   <caret line="29" column="24" selection-start-line="29" selection-start-column="24" selection-end-line="29" selection-end-column="24" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="product.liquid" pinned="false" current-in-tab="false">
+          <file leaf-file-name="product.liquid" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/shop/templates/product.liquid">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-56.208332">
-                  <caret line="224" column="0" selection-start-line="224" selection-start-column="0" selection-end-line="224" selection-end-column="0" />
+                <state vertical-scroll-proportion="0.34354487">
+                  <caret line="45" column="25" selection-start-line="45" selection-start-column="25" selection-end-line="45" selection-end-column="25" />
                   <folding />
                 </state>
               </provider>
@@ -56,18 +56,28 @@
           <file leaf-file-name="theme.liquid" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/shop/layout/theme.liquid">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-28.125">
-                  <caret line="45" column="28" selection-start-line="45" selection-start-column="28" selection-end-line="45" selection-end-column="28" />
+                <state vertical-scroll-proportion="-15.625">
+                  <caret line="25" column="43" selection-start-line="25" selection-start-column="43" selection-end-line="25" selection-end-column="43" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="header-bar.liquid" pinned="false" current-in-tab="true">
+          <file leaf-file-name="header-bar.liquid" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/shop/snippets/header-bar.liquid">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.5251641">
-                  <caret line="32" column="10" selection-start-line="32" selection-start-column="10" selection-end-line="32" selection-end-column="10" />
+                <state vertical-scroll-proportion="-9.265306">
+                  <caret line="38" column="12" selection-start-line="38" selection-start-column="12" selection-end-line="38" selection-end-column="12" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="script.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/shop/assets/script.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="-0.0">
+                  <caret line="0" column="2032" selection-start-line="0" selection-start-column="2032" selection-end-line="0" selection-end-column="2032" />
                   <folding />
                 </state>
               </provider>
@@ -103,16 +113,6 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="breadcrumb.liquid" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/shop/snippets/breadcrumb.liquid">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="9" column="23" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
         </leaf>
       </split-first>
       <split-second>
@@ -120,8 +120,8 @@
           <file leaf-file-name="product.liquid" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/shop/templates/product.liquid">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.32713348">
-                  <caret line="214" column="20" selection-start-line="214" selection-start-column="20" selection-end-line="214" selection-end-column="39" />
+                <state vertical-scroll-proportion="0.88512033">
+                  <caret line="97" column="10" selection-start-line="97" selection-start-column="10" selection-end-line="97" selection-end-column="10" />
                   <folding />
                 </state>
               </provider>
@@ -152,12 +152,12 @@
         <option value="$PROJECT_DIR$/shop/snippets/footer.liquid" />
         <option value="$PROJECT_DIR$/shop/config/settings_schema.json" />
         <option value="$PROJECT_DIR$/shop/layout/theme.liquid" />
-        <option value="$PROJECT_DIR$/shop/snippets/header-bar.liquid" />
         <option value="$PROJECT_DIR$/shop/snippets/site-nav.liquid" />
         <option value="$PROJECT_DIR$/shop/snippets/cart.liquid" />
         <option value="$PROJECT_DIR$/shop/snippets/pagination-custom.liquid" />
         <option value="$PROJECT_DIR$/shop/snippets/collection-sorting.liquid" />
         <option value="$PROJECT_DIR$/shop/templates/collection.liquid" />
+        <option value="$PROJECT_DIR$/shop/snippets/header-bar.liquid" />
         <option value="$PROJECT_DIR$/shop/templates/product.liquid" />
       </list>
     </option>
@@ -248,28 +248,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="shopify_theme" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="shopify_theme" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="shop" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="customers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -450,7 +428,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="-4" width="1855" height="1084" extended-state="7" />
+    <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924962" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -488,13 +466,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/shop/snippets/home-content.liquid">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="2" column="25" selection-start-line="2" selection-start-column="25" selection-end-line="2" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/shop/config/settings_schema.json">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -793,24 +764,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/shop/assets/script.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.27929902">
-          <caret line="0" column="3344" selection-start-line="0" selection-start-column="3344" selection-end-line="0" selection-end-column="3344" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/shop/assets/theme.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.37787515">
           <caret line="4" column="2264" selection-start-line="4" selection-start-column="2264" selection-end-line="4" selection-end-column="2264" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/shop/templates/index.liquid">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34463894">
-          <caret line="21" column="32" selection-start-line="21" selection-start-column="32" selection-end-line="21" selection-end-column="63" />
         </state>
       </provider>
     </entry>
@@ -822,34 +779,58 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/shop/snippets/collection-sorting.liquid">
+    <entry file="file://$PROJECT_DIR$/shop/assets/script.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="29" column="24" selection-start-line="29" selection-start-column="24" selection-end-line="29" selection-end-column="24" />
+        <state vertical-scroll-proportion="-0.0">
+          <caret line="0" column="2032" selection-start-line="0" selection-start-column="2032" selection-end-line="0" selection-end-column="2032" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/shop/templates/product.liquid">
+    <entry file="file://$PROJECT_DIR$/shop/templates/index.liquid">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-56.208332">
-          <caret line="224" column="0" selection-start-line="224" selection-start-column="0" selection-end-line="224" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.47592998">
+          <caret line="29" column="9" selection-start-line="29" selection-start-column="9" selection-end-line="29" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/shop/templates/article.liquid">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/shop/snippets/collection-sorting.liquid">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-18.125">
+          <caret line="29" column="24" selection-start-line="29" selection-start-column="24" selection-end-line="29" selection-end-column="24" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/shop/layout/theme.liquid">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-28.125">
-          <caret line="45" column="28" selection-start-line="45" selection-start-column="28" selection-end-line="45" selection-end-column="28" />
+        <state vertical-scroll-proportion="-15.625">
+          <caret line="25" column="43" selection-start-line="25" selection-start-column="43" selection-end-line="25" selection-end-column="43" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/shop/snippets/header-bar.liquid">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5251641">
-          <caret line="32" column="10" selection-start-line="32" selection-start-column="10" selection-end-line="32" selection-end-column="10" />
+        <state vertical-scroll-proportion="-9.265306">
+          <caret line="38" column="12" selection-start-line="38" selection-start-column="12" selection-end-line="38" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/shop/templates/product.liquid">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.34354487">
+          <caret line="45" column="25" selection-start-line="45" selection-start-column="25" selection-end-line="45" selection-end-column="25" />
           <folding />
         </state>
       </provider>
