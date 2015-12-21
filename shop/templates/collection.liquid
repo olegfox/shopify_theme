@@ -37,11 +37,18 @@
   {% include 'collection-sorting' %}
   <!-- end Filters -->
 
-  {% paginate collection.products by 100 %}
+  {% assign productsCountTotal = collection.products | size %}
+
+  {% paginate collection.products by 10 %}
+    {% assign productsCountCurrent = collection.products | size | plus: paginate.current_offset %}
+    {% assign productsCountFirst = paginate.current_offset | plus: 1 %}
+    {% assign productsCountSecond = paginate.current_page  %}
+
     <!-- Items catalog -->
     <div class="items-catalog">
       <ul>
-        {% for product in collection.products offset: paginate.current_offset %}
+        <li class="sizer"></li>
+        {% for product in collection.products %}
           <li class="{% if forloop.index == 1 %}size-40{% else %}size-20{% endif %}">
             <div class="inner">
               <a href="{{ product.url }}">
@@ -58,11 +65,13 @@
 
     <!-- Footer catalog -->
     <div class="footer-catalog">
-      <div class="little-text">Items {{ paginate.current_offset * 100 + 1  }} to {{ (paginate.current_offset + 1) + 100  }} of {{ collection.products | size }} total</div>
-
-      <button class="btn">Load more</button>
-
       {% if paginate.pages > 0 %}
+        <div class="little-text">Items {{ productsCountFirst }} to {{ productsCountCurrent  }} of {{ productsCountTotal }} total</div>
+
+        {% if paginate.next %}
+          <button class="btn btn-load-more">Load more</button>
+        {% endif %}
+
         {% include 'pagination-custom' %}
       {% endif %}
     </div>

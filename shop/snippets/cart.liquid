@@ -7,99 +7,69 @@
 
         <div class="cart-list">
             <ul>
-                <li>
-                    <div class="image">
-                        <a href="#"><img src="{{ 'product_cart.png' | asset_url }}" alt=""/></a>
-                    </div>
-                    <div class="description">
-                        <a href="#" class="title">Hello Yellow Mom's 1/2oz</a>
-                        <div class="price">
-                            $110
+                {% for item in cart.items %}
+                    <li id="cart-product{{ item.id }}">
+                        <div class="image">
+                            <a href="{{ item.product.url }}"><img src="{{ item.product.images[0] | img_url: "medium" }}" alt=""/></a>
                         </div>
-                        <div class="form_quantity">
-                            <div class="quantity">1</div>
-                            <div class="buttons">
-                                <button class="plus"><span class="line"></span><span class="vertical-line"></span></button>
-                                <span class="line"></span>
-                                <button class="minus"><span class="line"></span></button>
+                        <div class="description">
+                            <a href="#" class="title">
+                                {{ item.product.title }}
+                                {% unless item.variant.title contains 'Default' %}
+                                {{ item.variant.title }}
+                                {% endunless %}
+                            </a>
+                            <div class="price">
+                                {{ item.product.price | money }}
                             </div>
-                            <a href="#" class="remove">Remove</a>
-                        </div>
-                    </div>
-                    <hr/>
-                </li>
-                <li>
-                    <div class="image">
-                        <a href="#"><img src="{{ 'product_cart.png' | asset_url }}" alt=""/></a>
-                    </div>
-                    <div class="description">
-                        <a href="#" class="title">Hello Yellow Mom's 1/2oz</a>
-                        <div class="price">
-                            $110
-                        </div>
-                        <div class="form_quantity">
-                            <div class="quantity">1</div>
-                            <div class="buttons">
-                                <button class="plus"><span class="line"></span><span class="vertical-line"></span></button>
-                                <span class="line"></span>
-                                <button class="minus"><span class="line"></span></button>
+                            <div class="form_quantity">
+                                <input type="hidden" id="variant_id" value="{{ item.variant_id }}"/>
+                                <div class="quantity">{{ item.quantity }}</div> 
+                                <div class="buttons">
+                                    <button class="plus"><span class="line"></span><span class="vertical-line"></span></button>
+                                    <span class="line"></span>
+                                    <button class="minus"><span class="line"></span></button>
+                                </div>
+                                <a href="#" class="remove">Remove</a>
                             </div>
-                            <a href="#" class="remove">Remove</a>
                         </div>
-                    </div>
-                    <hr/>
-                </li>
-                <li>
-                    <div class="image">
-                        <a href="#"><img src="{{ 'product_cart.png' | asset_url }}" alt=""/></a>
-                    </div>
-                    <div class="description">
-                        <a href="#" class="title">Hello Yellow Mom's 1/2oz</a>
-                        <div class="price">
-                            $110
-                        </div>
-                        <div class="form_quantity">
-                            <div class="quantity">1</div>
-                            <div class="buttons">
-                                <button class="plus"><span class="line"></span><span class="vertical-line"></span></button>
-                                <span class="line"></span>
-                                <button class="minus"><span class="line"></span></button>
-                            </div>
-                            <a href="#" class="remove">Remove</a>
-                        </div>
-                    </div>
-                    <hr/>
-                </li>
-                <li>
-                    <div class="image">
-                        <a href="#"><img src="{{ 'product_cart.png' | asset_url }}" alt=""/></a>
-                    </div>
-                    <div class="description">
-                        <a href="#" class="title">Hello Yellow Mom's 1/2oz</a>
-                        <div class="price">
-                            $110
-                        </div>
-                        <div class="form_quantity">
-                            <div class="quantity">1</div>
-                            <div class="buttons">
-                                <button class="plus"><span class="line"></span><span class="vertical-line"></span></button>
-                                <span class="line"></span>
-                                <button class="minus"><span class="line"></span></button>
-                            </div>
-                            <a href="#" class="remove">Remove</a>
-                        </div>
-                    </div>
-                    <hr/>
-                </li>
+                        <hr/>
+                    </li>
+                {% endfor %}
             </ul>
             <div class="block_total">
                 <div class="title">
                     Total
                 </div>
-                <div class="total">${{ cart.total_price | money }}</div>
-                <a href="#" class="btn">Checkout</a>
+                <div class="total">{{ cart.total_price | money }}</div>
+                <form action="/cart" method="post" class="form-checkout">
+                    <button type="submit" name="checkout" class="btn">Checkout</button>
+                </form>
             </div>
         </div>
     </div>
 </div>
 <!-- end Cart -->
+
+<!-- Cart template -->
+<li class="cart-tempate" style="display: none;">
+    <div class="image">
+        <a href="#"><img src="" alt=""/></a>
+    </div>
+    <div class="description">
+        <a href="#" class="title"></a>
+        <div class="price"></div>
+        <div class="form_quantity">
+            <input type="hidden" id="variant_id" value=""/>
+            <div class="quantity"></div>
+            <div class="buttons">
+                <button class="plus"><span class="line"></span><span class="vertical-line"></span></button>
+                <span class="line"></span>
+                <button class="minus"><span class="line"></span></button>
+            </div>
+            <a href="#" class="remove">Remove</a>
+        </div>
+    </div>
+    <hr/>
+</li>
+<!-- end Cart template -->
