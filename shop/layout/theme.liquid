@@ -39,15 +39,33 @@
 
 <body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}" >
 
+  {% include 'login' %}
+
   {% include 'cart' %}
 
   {% include 'site-nav' %}
 
-  {% include 'header-bar' %}
+  {% include 'search-bar' %}
 
-  {{content_for_layout}}
+  <!-- Content -->
+  <div class="content">
 
-  {% include 'footer' %}
+    {% include 'header-bar' %}
+
+    {% if template != 'index' %}
+    <div class="wrap-section">
+    {% endif %}
+
+      {{content_for_layout}}
+
+    {% if template != 'index' %}
+    </div>
+    {% endif %}
+
+    {% include 'footer' %}
+
+  </div>
+  <!-- end Content -->
 
   {{ 'script.js' | asset_url | script_tag }}
 

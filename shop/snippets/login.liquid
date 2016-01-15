@@ -1,0 +1,80 @@
+<!-- Login -->
+<div class="wrap-login" data-height="393px">
+    <div class="login">
+        <div class="pull-left">
+            <h3>I'm New Here</h3>
+            <p>Creating an account with End is quick and easy, and will allow you to move through our checkout quicker. You can also store multiple shipping addresses, gain access to your order history, and much more.</p>
+            <a href="#" class="btn">Sign Up</a>
+        </div>
+
+        <div class="vertical-border"></div>
+
+        <div class="pull-right">
+
+            <div id="RecoverPasswordForm" style="display: none;">
+
+                <h3>{{ 'customer.recover_password.title' | t }}</h3>
+
+                <div class="help">{{ 'customer.recover_password.subtext' | t }}</div>
+
+                {% form 'recover_customer_password' %}
+                    <div class="for-input">
+                        <input type="email" name="email" id="RecoverEmail" placeholder="{{ 'customer.recover_password.email' | t }}" autocorrect="off" autocapitalize="off">
+                    </div>
+
+                    <button type="submit" class="btn">{{ 'customer.recover_password.submit' | t }}</button>
+                    <a href="#" onclick="hideRecoverPasswordForm();return false;" class="sub-link">Cancel</a>
+                {% endform %}
+
+                <div class="help message hide">Please check the email</div>
+
+            </div>
+
+            <div id="CustomerLoginForm">
+
+                <h3>I'm Already Registered</h3>
+
+                <div class="help">Please login to your account here.</div>
+
+                {% form 'customer_login' %}
+                    <div class="for-input">
+                        <input type="email" name="customer[email]" placeholder="E-mail">
+                    </div>
+                    <div class="for-input">
+                        <input type="password" name="customer[password]" placeholder="Password">
+                    </div>
+                    <button type="submit" class="btn">Log in</button>
+                    <a href="#" onclick="showRecoverPasswordForm(); return false;" class="sub-link">Forgot Your Password?</a>
+                {% endform %}
+
+            </div>
+
+        </div>
+
+        <div class="close"></div>
+    </div>
+</div>
+<!-- end Login -->
+
+<script>
+    /*
+     Show/hide the recover password form when requested.
+     */
+    function showRecoverPasswordForm() {
+        document.getElementById('RecoverPasswordForm').style.display = 'block';
+        document.getElementById('CustomerLoginForm').style.display='none';
+    }
+
+    function hideRecoverPasswordForm() {
+        document.getElementById('RecoverPasswordForm').style.display = 'none';
+        document.getElementById('CustomerLoginForm').style.display = 'block';
+    }
+
+    // Allow deep linking to the recover password form
+    if (window.location.hash == '#recover') { showRecoverPasswordForm() }
+
+    // reset_success is only true when the reset form is
+    {% if reset_success %}
+    document.getElementById('ResetSuccess').style.display = 'block';
+    {% endif %}
+</script>

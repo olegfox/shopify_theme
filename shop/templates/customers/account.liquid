@@ -1,98 +1,164 @@
-<div class="section-header section-header--large">
-  <h1 class="section-header__title">{{ 'customer.account.title' | t }}</h1>
-</div>
+<section class="account">
+  <div class="wrap-head">
+    <!-- Breadcrumbs -->
+    <div class="breadcrumbs">
+      <ul>
+        <li>
+          <a href="#">Home</a>
+          <span class="line">/</span>
+        </li>
+        <li>My account</li>
+      </ul>
+    </div>
+    <!-- end Breadcrumbs -->
 
-<div class="grid">
-
-  <div class="grid__item two-thirds medium-down--one-whole">
-    <h4>{{ 'customer.orders.title' | t }}</h4>
-
-    {% comment %}
-      If we have past orders, loop through each one
-    {% endcomment %}
-
-    {% paginate customer.orders by 20 %}
-
-    {% if customer.orders.size != 0 %}
-
-      <div class="table-wrap">
-        <table class="full">
-          <thead>
-            <tr>
-              <th>{{ 'customer.orders.order_number' | t }}</th>
-              <th>{{ 'customer.orders.date' | t }}</th>
-              <th>{{ 'customer.orders.payment_status' | t }}</th>
-              <th>{{ 'customer.orders.fulfillment_status' | t }}</th>
-              <th>{{ 'customer.orders.total' | t }}</th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for order in customer.orders %}
-              <tr>
-                <td>{{ order.name | link_to: order.customer_url }}</td>
-                <td>{{ order.created_at | date: "%b %d, %Y" }}</td>
-                <td>{{ order.financial_status_label }}</td>
-                <td>{{ order.fulfillment_status_label }}</td>
-                <td>{{ order.total_price | money }}</td>
-              </tr>
-            {% endfor %}
-          </tbody>
-        </table>
+    <div class="wrap-link-tabs">
+      <div class="link-tabs">
+        <ul>
+          <li class="current">
+            <a href="/account#account_tab">Account</a>
+          </li>
+          <!--<li>-->
+            <!--<a href="#">Wishlist</a>-->
+          <!--</li>-->
+          <li>
+            <a href="/account#my_orders">My Orders</a>
+          </li>
+          <li>
+            <a href="/account/logout">Sign Out</a>
+          </li>
+        </ul>
       </div>
-
-    {% else %}
-
-      <p>{{ 'customer.orders.none' | t }}</p>
-
-    {% endif %}
-
-    {% if paginate.pages > 1 %}
-      <div class="text-center">
-        {% include 'pagination-custom' %}
-      </div>
-    {% endif %}
-
-    {% endpaginate %}
+    </div>
 
   </div>
 
-  <div class="grid__item one-third medium-down--one-whole">
-    <h4>{{ 'customer.account.details' | t }}</h4>
+  <!-- Tabs content -->
+  <div class="tab tab-active" id="account_tab">
+    <div class="form-account">
+      <!--<div class="left">-->
+        <!--<div class="section-header">-->
+          <!--<h1 class="section-header__title">Account Information</h1>-->
+        <!--</div>-->
+        <!--<div class="inner-left">-->
+          <!--{% include 'reset_password' %}-->
+        <!--</div>-->
+      <!--</div>-->
+      <div class="left">
+        <div class="section-header">
+          <h1 class="section-header__title">Shipping Address</h1>
+        </div>
+        <div class="inner-left">
+          {% include 'addresses' %}
+        </div>
+      </div>
 
-    <h5>{{ customer.name }}</h5>
+      <div class="wrap_btn">
+        <input type="button" class="btn" value="Save">
+      </div>
 
-    {% if customer.default_address != nil %}
-      <p>
-      {{ customer.default_address.address1 }}<br>
-
-      {% if customer.default_address.address2 != "" %}
-        {{ customer.default_address.address2 }}<br>
-      {% endif %}
-
-      {% if customer.default_address.city != "" %}
-        {{ customer.default_address.city }}<br>
-      {% endif %}
-
-      {% if customer.default_address.province_code != "" %}
-        {{ customer.default_address.province_code | upcase }}<br>
-      {% endif %}
-
-      {% if customer.default_address.zip != "" %}
-        {{ customer.default_address.zip | upcase }}<br>
-      {% endif %}
-
-      {% if customer.default_address.country != "" %}
-        {{ customer.default_address.country }}<br>
-      {% endif %}
-
-      {% if customer.default_address.phone != "" %}
-        {{ customer.default_address.phone }}
-      {% endif %}
-      </p>
-
-    {% endif %}
-
-    <p><a href="/account/addresses">{{ 'customer.account.view_addresses' | t }} ({{ customer.addresses_count }})</a></p>
+    </div>
   </div>
+  <div class="tab" id="my_orders">
+    <div class="list-order">
 
-</div>
+      <h1>Recent Orders</h1>
+
+      <table>
+
+        <thead>
+        <tr>
+          <th>Order #</th>
+          <th>Date</th>
+          <th>Ship to</th>
+          <th>Order total</th>
+          <th>Status</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        {% for order in customer.orders %}
+        <tr {% if order.financial_status_label == 'voided' %}class="canceled"{% endif %}>
+        <td>{{ order.name }}</td>
+        <td>{{ order.created_at | date: "%d/%m/%Y" }}</td>
+        <td>{{ customer.name }}</td>
+        <td>{{ order.total_price | money }}</td>
+        <td><span class="icon-order icon-order-{{ order.financial_status_label | downcase }}"></span>{{ order.financial_status_label }}</td>
+        </tr>
+        <tr class="select hide">
+          <td colspan="5">
+            <div class="info-order">
+              <div class="products-column">
+                <div class="head">
+                  order
+                </div>
+                <ul>
+                  {% for line_item in order.line_items %}
+                  <li>
+                    <a href="{{ line_item.product.url }}">{{ line_item.product.title }}</a>
+                    <span class="price">{{ line_item.price | money }}</span>
+                  </li>
+                  {% endfor %}
+                </ul>
+              </div>
+              <div class="shipping-address-column">
+                <div class="head">shipping address</div>
+                {% if customer.default_address != nil %}
+                <p>
+                  {{ customer.default_address.address1 }}<br>
+
+                  {% if customer.default_address.address2 != "" %}
+                  {{ customer.default_address.address2 }}<br>
+                  {% endif %}
+
+                  {% if customer.default_address.city != "" %}
+                  {{ customer.default_address.city }}<br>
+                  {% endif %}
+
+                  {% if customer.default_address.province_code != "" %}
+                  {{ customer.default_address.province_code | upcase }}<br>
+                  {% endif %}
+
+                  {% if customer.default_address.zip != "" %}
+                  {{ customer.default_address.zip | upcase }}<br>
+                  {% endif %}
+
+                  {% if customer.default_address.country != "" %}
+                  {{ customer.default_address.country }}<br>
+                  {% endif %}
+
+                  {% if customer.default_address.phone != "" %}
+                  {{ customer.default_address.phone }}
+                  {% endif %}
+                </p>
+
+                {% endif %}
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr class="select hide">
+          <td colspan="2">
+            <strong><span class="head">Subtotal</span></strong>
+            {{ order.subtotal_price | money }}
+          </td>
+          <td colspan="1">
+            <strong><span class="head">Shipping</span></strong>
+            {{ order.shipping_price | money }}
+          </td>
+          <td colspan="2">
+            <strong>Total</strong>
+            <span class="total">{{ order.total_price | money }}</span>
+          </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+
+      </table>
+
+    </div>
+  </div>
+  <!-- end Tabs content -->
+
+
+</section>

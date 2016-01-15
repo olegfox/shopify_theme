@@ -1,6 +1,6 @@
 <!-- Header bar -->
 <div class="wrap-header-bar">
-  <div class="header-bar {% if template == 'index' %}header-bar-white{% else if template == 'product' %}header-bar-dark header-bar-gray header-bar-static{% else %}header-bar-dark header-bar-static{% endif %}">
+  <div class="header-bar {% if template == 'index' %}header-bar-white{% elsif template == 'product' %}header-bar-white header-bar-gray{% else %}header-bar-dark header-bar-static{% endif %}">
     <div class="grid-item text-left grid-item-1">
       <!-- Menu button -->
       <div class="menu-button" id="toggle-sidebar">
@@ -37,14 +37,22 @@
     <div class="grid-item grid-item-3">
       <div class="wrap">
         <ul>
+          <li>{{template}}</li>
           {% for link in linklists.top-menu.links %}
             <li>
               <a href="{{ link.url }}">{{ link.title }}</a>
             </li>
           {% endfor %}
+          <li>
+            {% if customer %}
+              <a href="/account/" {% if template == 'customers/account' %}class="current"{% endif %}>My account</a>
+            {% else %}
+              <a href="/account/login/">Sign in</a>
+            {% endif %}
+          </li>
         </ul>
 
-        <div class="search">
+        <div class="search" id="toggle-search">
           <div class="icon-search"></div>
         </div>
 

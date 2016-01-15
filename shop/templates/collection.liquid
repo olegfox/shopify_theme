@@ -1,19 +1,9 @@
 <!-- Catalog -->
 <section class="catalog">
 
-  <!-- Breadcrumbs -->
-  <div class="breadcrumbs">
-    <ul>
-      <li>
-        <a href="/">Home</a>
-        <span class="line">/</span>
-      </li>
-      <li>{{ collection.title }}</li>
-    </ul>
-  </div>
-  <!-- end Breadcrumbs -->
+  {% include 'breadcrumb' %}
 
-  <h2>{{ collection.title }}</h2>
+  <h2>{% if current_tags %}{{ current_tags | join: " + " }}{% else %}{{ collection.title }}{% endif %}</h2>
 
   {% capture child_list_handle %}{{ collection.title | handle }}{% endcapture %}
 
@@ -49,13 +39,28 @@
       <ul>
         <li class="sizer"></li>
         {% for product in collection.products %}
-          <li class="{% if forloop.index == 1 %}size-40{% else %}size-20{% endif %}">
+          <li class="{% if product.tags contains 'big' %}size-60{% elsif product.tags contains 'ink' %}size-40{% else %}size-20{% endif %} hide">
             <div class="inner">
               <a href="{{ product.url }}">
-                <img src="{% if forloop.index == 1 %}{{ product.images[0] | img_url: "large" }}{% else %}{{ product.images[0] | img_url: "medium" }}{% endif %}" alt=""/>
+                <img data-src="https:{% if product.tags contains 'big' %}{{ product.images[0] | img_url: "original" }}{% elsif product.tags contains 'ink' %}{{ product.images[0] | img_url: "original" }}{% else %}{{ product.images[0] | img_url: "large" }}{% endif %}"
+
+                {% if product.tags contains 'big' %}
+                data-width="1024" data-height="940"
+                {% elsif product.tags contains 'ink' %}
+                data-width="480" data-height="800"
+                {% else %}
+                data-width="480" data-height="480"
+                {% endif %}
+
+                alt=""/>
               </a>
-              <a href="{{ product.url }}" class="title">{{ product.title }}</a>
-              <span class="price">{{ product.price | money }}</span>
+              <div class="info">
+                <a href="{{ product.url }}" class="title">{{ product.title }}</a>
+                {% if product.tags contains 'big' %}
+                <a href="{{ product.url }}" class="description"><span>{{ product.metafields.global.description_tag }}</span></a>
+                {% endif %}
+                <span class="price">{{ product.price | money }}</span>
+              </div>
             </div>
           </li>
         {% endfor %}
