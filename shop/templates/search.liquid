@@ -1,102 +1,67 @@
-{% comment %}
+<!-- Search -->
+<section class="catalog">
 
-  The {{ content_for_header }} in theme.liquid will output the following stylesheet just for this page:
-    - <link rel="stylesheet" href="/global/search.css" type="text/css">
+  {% include 'breadcrumb' %}
 
-  It has a few helpers in there, but this theme writes its own styles so there
-  are no dependencies or conflicts. You can ignore that file.
+  <h2>Search results</h2>
 
-  Return only products or pages in results:
-    - http://docs.shopify.com/manual/configuration/store-customization/return-only-product-in-storefront-search-results
-    - Or manually add type=product or type=page to the search URL as a parameter
+  <!-- Filters -->
+  {% include 'search-sorting' %}
+  <!-- end Filters -->
 
-{% endcomment %}
+  {% assign productsCountTotal = search.results_count %}
 
-{% comment %}
-  If you're only showing products with the method above, why not show them off in a grid instead?
-  Set grid_results to true and see your updated results page for the new layout.
-{% endcomment %}
-{% assign grid_results = false %}
+  {% paginate search.results by 10 %}
+  {% assign productsCountCurrent = productsCountTotal | plus: paginate.current_offset %}
+  {% assign productsCountFirst = paginate.current_offset | plus: 1 %}
+  {% assign productsCountSecond = paginate.current_page  %}
 
-{% comment %}
-  Check to enforce respond.js
-{% endcomment %}
-{% assign respond_js_secret_key = shop.domain | md5 %}
-{% unless search.terms == respond_js_secret_key %}
-
-  {% if search.performed %}
-
-    {% comment %}
-      Avoid accessing search.results before the opening paginate tag.
-      If you do, the pagination of results will be broken.
-    {% endcomment %}
-    {% paginate search.results by 10 %}
-
-      {% comment %}
-        We don't have any results to show. Feel free to show off featured products
-        or suggested searches here.
-      {% endcomment %}
-      {% if search.results_count == 0 %}
-
-        <div class="section-header section-header--large">
-          <h1 class="section-header__title h2">{{ 'general.search.no_results_html' | t: terms: search.terms }}</h1>
-        </div>
-        {% include 'search-bar' %}
-
-      {% else %}
-
-        <div class="section-header section-header--large">
-          <h1 class="section-header__title h2">{{ 'general.search.results_for_html' | t: terms: search.terms }}</h1>
-        </div>
-        {% include 'search-bar' %}
-
-        {% comment %}
-          Each result template, based on the grid_layout variable above
-        {% endcomment %}
-        {% if grid_results == false %}
-
-          <hr>
-          {% for item in search.results %}
-            {% include 'search-result' %}
-            <hr>
-          {% endfor %}
-
-        {% else %}
-
-          <div class="grid-uniform">
-            {% for item in search.results %}
-              {% assign grid_item_width = 'large--one-quarter medium--one-third small--one-half' %}
-              {% include 'search-result-grid' %}
-            {% endfor %}
+  <!-- Items catalog -->
+  <div class="items-catalog">
+    <ul>
+      <li class="sizer"></li>
+      {% for product in search.results %}
+      <li class="hide {% if product.tags contains 'big' %}size-60{% elsif product.tags contains 'ink' %}size-40{% else %}size-20{% endif %}">
+        <div class="inner">
+          <a href="{{ product.url }}" style="background-image: url('https:{% if product.tags contains 'big' %}{{ product.images[0] | img_url: "original" }}{% elsif product.tags contains 'ink' %}{{ product.images[0] | img_url: "original" }}{% else %}{{ product.images[0] | img_url: "large" }}{% endif %}');">
+          <canvas class="hide"
+                  {% if product.tags contains 'big' %}
+          width="1024" height="870"
+          {% elsif product.tags contains 'ink' %}
+          width="480" height="800"
+          {% else %}
+          width="480" height="480"
+          {% endif %}
+          ></canvas>
+          </a>
+          <div class="info">
+            <a href="{{ product.url }}" class="title">{{ product.title }}</a>
+            {% if product.tags contains 'big' %}
+            <a href="{{ product.url }}" class="description"><span>{{ product.metafields.global.description_tag }}</span></a>
+            {% endif %}
+            <span class="price">{{ product.price | money }}</span>
           </div>
-
-        {% endif %}
-
-      {% endif %}
-
-      {% if paginate.pages > 1 %}
-        <div class="text-center">
-          {% include 'pagination-custom' %}
         </div>
-      {% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  <!-- end Items catalog -->
 
-    {% endpaginate %}
+  <!-- Footer catalog -->
+  <div class="footer-catalog">
+    {% if paginate.pages > 0 %}
+    <div class="little-text">Items {{ productsCountFirst }} to {{ productsCountCurrent  }} of {{ productsCountTotal }} total</div>
 
-  {% else %}
+    {% if paginate.next %}
+    <button class="btn btn-load-more">Load more</button>
+    {% endif %}
 
-    {% comment %}
-      If search.performed is false, someone either accessed the page without
-      the q parameter, or it was blank.
-      Be sure to show a search form here, along with anything else you want to showcase.
-    {% endcomment %}
-    <div class="section-header section-header--large">
-      <h1 class="section-header__title h2">{{ 'general.search.title' | t }}</h1>
-    </div>
-    {% include 'search-bar' %}
+    {% include 'pagination-custom' %}
+    {% endif %}
+  </div>
+  <!-- end Footer catalog -->
+  {% endpaginate %}
 
-  {% endif %}
-
-{% else %}
-  {% include 'respond' %}
-  {% layout none %}
-{% endunless %}
+</section>
+<!-- end Search -->

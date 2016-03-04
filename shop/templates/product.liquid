@@ -5,6 +5,8 @@
     {% include 'breadcrumb' %}
 
     <h2>{{ product.title }}</h2>
+
+    <div class="price">{{ product.price | money }}</div>
   </div>
 
   <!-- Product images -->
@@ -39,7 +41,7 @@
     <div class="shop-bar">
       <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm">
 
-        <select name="id" id="productSelect" class="product-single__variants">
+        <select name="id" id="productSelect" class="product-single__variants" {% if product.variants.size == 1 and product.variants.first.title contains 'Default' %}style="display: none;"{% endif %}>
           {% for variant in product.variants %}
             {% if variant.available %}
 
@@ -71,8 +73,22 @@
   <div class="wrap-product-info">
     <div class="product-info">
       <div class="text">
-        {{ product.description }}
+        <h3>information</h3>
+        <div class="inner-text">
+          {{product.description}}
+        </div>
       </div>
+      <div class="description">
+        <div class="details">
+          <h3>details</h3>
+          <ul>
+          </ul>
+        </div>
+        <div class="options">
+          <h3>options</h3>
+          <ul>
+          </ul>
+        </div>
     </div>
   </div>
   <!-- end Product info -->

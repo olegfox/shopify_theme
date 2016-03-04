@@ -39,20 +39,18 @@
       <ul>
         <li class="sizer"></li>
         {% for product in collection.products %}
-          <li class="{% if product.tags contains 'big' %}size-60{% elsif product.tags contains 'ink' %}size-40{% else %}size-20{% endif %} hide">
+          <li class="hide {% if product.tags contains 'big' %}size-60{% elsif product.tags contains 'ink' %}size-40{% else %}size-20{% endif %}">
             <div class="inner">
-              <a href="{{ product.url }}">
-                <img data-src="https:{% if product.tags contains 'big' %}{{ product.images[0] | img_url: "original" }}{% elsif product.tags contains 'ink' %}{{ product.images[0] | img_url: "original" }}{% else %}{{ product.images[0] | img_url: "large" }}{% endif %}"
-
+              <a href="{{ product.url }}" style="background-image: url('https:{% if product.tags contains 'big' %}{{ product.images[0] | img_url: "original" }}{% elsif product.tags contains 'ink' %}{{ product.images[0] | img_url: "original" }}{% else %}{{ product.images[0] | img_url: "large" }}{% endif %}');">
+                <canvas class="hide"
                 {% if product.tags contains 'big' %}
-                data-width="1024" data-height="940"
+                width="1024" height="870"
                 {% elsif product.tags contains 'ink' %}
-                data-width="480" data-height="800"
+                width="480" height="800"
                 {% else %}
-                data-width="480" data-height="480"
+                width="480" height="480"
                 {% endif %}
-
-                alt=""/>
+                ></canvas>
               </a>
               <div class="info">
                 <a href="{{ product.url }}" class="title">{{ product.title }}</a>

@@ -27,6 +27,16 @@
     <li>{{ collection.title }}</li>
     {% endif %}
 
+    {% elsif template == 'search' %}
+
+    <li><span class="line">/</span></li>
+    <li>Search</li>
+
+    {% elsif template == 'customers/register' %}
+
+    <li><span class="line">/</span></li>
+    <li>Sign up</li>
+
     {% elsif template == 'blog' %}
 
     <span aria-hidden="true" class="breadcrumb__sep">&rsaquo;</span>

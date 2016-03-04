@@ -1,3 +1,79 @@
-<script type="text/javascript">
-  window.location.href = "/";
-</script>
+<section class="catalog">
+  <a href="#" class="paypal-button">
+  </a>
+
+  <div class="word-line">or</div>
+
+  <div class="section-header">
+    <h1 class="section-header__title">Checkout</h1>
+  </div>
+
+  {% if cart.item_count > 0 %}
+
+  <form action="/cart" method="post" novalidate class="cart">
+
+    <table>
+      <thead>
+      <th></th>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Qty</th>
+      <th></th>
+      </thead>
+
+      <tbody>
+      {% for item in cart.items %}
+      <tr id="page-cart-product{{ item.id }}">
+        <td class="img">
+          <a href="{{ item.url | within: collections.all }}" class="cart__image">
+            <img src="{{ item | img_url: 'small' }}" alt="{{ item.title | escape }}">
+          </a>
+        </td>
+        <td class="title">
+          <a href="{{ item.url }}" class="h5">
+            {{ item.product.title }}
+          </a>
+        </td>
+        <td class="price">
+          {{ item.price | money }}
+        </td>
+        <td>
+          <div class="buttons">
+            <div class="button plus"><span class="line"></span><span class="vertical-line"></span></div>
+            <div class="quantity">{{ item.quantity }}</div>
+            <div class="button minus"><span class="line"></span></div>
+          </div>
+        </td>
+        <td class="remove">
+          <input type="hidden" id="variant_id" value="{{ item.variant_id }}"/>
+          <a href="#" class="btn-remove"><span>+</span>Remove</a>
+        </td>
+      </tr>
+      {% endfor %}
+      <tr class="subtotal">
+        <td colspan="5">
+          <div class="pull-left">Subtotal</div>
+          <div class="pull-right">{{ cart.total_price | money }}</div>
+        </td>
+      </tr>
+      <tr class="total">
+        <td colspan="5">
+          <div class="pull-left">
+            <div class="head">Total</div>
+            <p>{{ 'cart.general.shipping_at_checkout' | t }}</p>
+          </div>
+          <div class="pull-right">{{ cart.total_price | money }}</div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+    <input type="submit" name="checkout" class="btn checkout" value="{{ 'cart.general.checkout' | t }}">
+  </form>
+  {% endif %}
+
+  <div class="null-cart {% if cart.item_count > 0 %}null-cart-hide{% endif %}">
+    <p>{{ 'cart.general.empty' | t }}</p>
+    <p>{{ 'cart.general.continue_browsing_html' | t }}</p>
+  </div>
+</section>
